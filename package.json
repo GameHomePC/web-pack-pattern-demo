@@ -1,23 +1,26 @@
 {
-    "name": "web-pack-pattern-demo",
-    "version": "0.0.1",
-    "description": "",
-    "main": "index.js",
-    "scripts": {
-        "test": "echo \"Error: no test specified\" && exit 1",
-        "webpack": "webpack"
-    },
-    "repository": {
-        "type": "git",
-        "url": "git+https://github.com/GameHomePC/web-pack-pattern-demo.git"
-    },
-    "author": "ealexseen",
-    "license": "ISC",
-    "bugs": {
-        "url": "https://github.com/GameHomePC/web-pack-pattern-demo/issues"
-    },
-    "homepage": "https://github.com/GameHomePC/web-pack-pattern-demo#readme",
-    "devDependencies": {
-        "webpack": "^1.12.14"
-    }
+  "name": "web-pack-pattern-demo",
+  "version": "0.0.1",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "webpackDev": "set NODE_ENV=development&& webpack",
+    "webpackProd": "webpack"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/GameHomePC/web-pack-pattern-demo.git"
+  },
+  "author": "ealexseen",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/GameHomePC/web-pack-pattern-demo/issues"
+  },
+  "homepage": "https://github.com/GameHomePC/web-pack-pattern-demo#readme",
+  "devDependencies": {
+    "babel-core": "^6.7.2",
+    "babel-loader": "^6.2.4",
+    "babel-preset-es2015": "^6.6.0",
+    "webpack": "^1.12.14"
+  }
 }

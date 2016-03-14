@@ -1,6 +1,5 @@
 'use strict';
 
-module.exports = function(message) {
-    debugger;
+export default function(message) {
     alert(`welcom ${message}`);
 };
