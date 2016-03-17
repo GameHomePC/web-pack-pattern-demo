@@ -19,7 +19,8 @@ module.exports = {
 
     plugins: [
         new webpack.DefinePlugin({
-            NODE_ENV: JSON.stringify(NODE_ENV)
+            NODE_ENV: JSON.stringify(NODE_ENV),
+            USERDOMAIN: JSON.stringify(process.env.USERDOMAIN)
         })
     ],
 

@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "webpackDev": "set NODE_ENV=development&& webpack",
-    "webpackProd": "webpack"
+    "webpackProd": "set NODE_ENV=prod&& webpack"
   },
   "repository": {
     "type": "git",
