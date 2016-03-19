@@ -7,13 +7,13 @@ const config = require("./config-path.json");
 module.exports = {
     context: __dirname + "/frontend",
     entry: {
-        home: "./home",
-        about: "./about",
+        app: "./app",
         common: "./common"
     },
 
     output: {
-        path: __dirname + '/public',
+        path: __dirname + '/public/js',
+        publicPath: '/js/',
         filename: "[name].js",
         library: "[name]"
     },
@@ -29,11 +29,6 @@ module.exports = {
     plugins: [
         /* при ошибке не создаёт файлы */
         new webpack.NoErrorsPlugin(),
-        /* передаёт данные в среду frontend */
-        new webpack.DefinePlugin({
-            NODE_ENV: JSON.stringify(NODE_ENV),
-            USERDOMAIN: JSON.stringify(process.env.USERDOMAIN)
-        }),
         /* создаёт отдельный скрипт common.js */
         new webpack.optimize.CommonsChunkPlugin({
             name: "common"
@@ -57,7 +52,11 @@ module.exports = {
         loaders: [{
             test: /\.js$/,
             exclude: '/',
-            loader: 'babel?presets[]=es2015'
+            loader: 'babel',
+            query: {
+                compact: false,
+                presets: ['es2015']
+            }
         }]
     }
 };
