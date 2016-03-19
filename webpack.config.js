@@ -6,7 +6,11 @@ const config = require("./config-path.json");
 
 module.exports = {
     context: __dirname + "/frontend",
-    entry: config.path,
+    entry: {
+        home: "./home",
+        about: "./about",
+        common: "./common"
+    },
 
     output: {
         path: __dirname + '/public',
