@@ -1,17 +1,8 @@
 "use strict";
 
-document.getElementById("loginButton").onclick = function(){
-    require.ensure([], function(require) {
-        let login = require("./login");
+let moduleName = location.pathname.slice(1);
 
-        login();
-    }, 'auth');
-};
+let context = require.context('./routes', false);
 
-document.getElementById("logoutButton").onclick = function(){
-    require.ensure([], function(require) {
-        let login = require("./logout");
-
-        login();
-    }, 'auth');
-};
+let route = context('./' + moduleName);
+route();

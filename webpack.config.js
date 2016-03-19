@@ -7,8 +7,7 @@ const config = require("./config-path.json");
 module.exports = {
     context: __dirname + "/frontend",
     entry: {
-        app: "./app",
-        common: "./common"
+        app: "./app"
     },
 
     output: {
@@ -29,10 +28,7 @@ module.exports = {
     plugins: [
         /* при ошибке не создаёт файлы */
         new webpack.NoErrorsPlugin(),
-        /* создаёт отдельный скрипт common.js */
-        new webpack.optimize.CommonsChunkPlugin({
-            name: "common"
-        })
+        new webpack.ContextReplacementPlugin( /node_modules\/moment\/locale/, /ru|en-gb/)
     ],
 
     /* устанавливает настройки по умолчанию для webpack */
