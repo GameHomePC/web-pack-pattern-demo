@@ -11,8 +11,8 @@ module.exports = {
     },
 
     output: {
-        path: __dirname + '/public/js',
-        publicPath: '/js/',
+        path: __dirname + '/public',
+        publicPath: '/',
         filename: "[name].js",
         library: "[name]"
     },
@@ -27,8 +27,7 @@ module.exports = {
 
     plugins: [
         /* при ошибке не создаёт файлы */
-        new webpack.NoErrorsPlugin(),
-        new webpack.ContextReplacementPlugin( /node_modules\/moment\/locale/, /ru|en-gb/)
+        new webpack.NoErrorsPlugin()
     ],
 
     /* устанавливает настройки по умолчанию для webpack */
