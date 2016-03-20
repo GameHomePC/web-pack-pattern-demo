@@ -2,6 +2,7 @@
 
 const NODE_ENV = process.env.NODE_ENV || "development";
 const webpack = require("webpack");
+const path = require('path');
 const config = require("./config-path.json");
 
 module.exports = {
@@ -27,33 +28,33 @@ module.exports = {
 
     plugins: [
         /* при ошибке не создаёт файлы */
-        new webpack.NoErrorsPlugin()
+        new webpack.NoErrorsPlugin(),
+
+        /* подключени глобальных библиотек ProvidePlugin */
+        //new webpack.ProvidePlugin({
+        //    _: 'lodash'
+        //})
     ],
 
-    /* устанавливает настройки по умолчанию для webpack */
     resolve: {
-        modulesDirectories: ['node_modules'],
-        extensions: ['', '.js']
-    },
-
-    /* устанавливает настройки по умолчанию для webpack loader */
-    resolveLoader: {
-        modulesDirectories: ['node_modules'],
-        moduleTemplates: ['*-loader', '*'],
-        extensions: ['', '.js']
+        root: [
+            path.resolve('./frontend/lib'),
+            path.resolve('./frontend')
+        ]
     },
 
     module: {
         loaders: [{
             test: /\.js$/,
-            exclude: '/',
+            exclude: wrapRegexp(/\/node_modules\//, 'exclude'), // типо должно ускорить сборку (но не ускорила)
             loader: 'babel',
             query: {
-                compact: false,
                 presets: ['es2015']
             }
         }]
-    }
+    },
+
+    noParse: wrapRegexp(/\/node_modules\/(...)/, 'noParse')
 };
 
 if(NODE_ENV == 'production') {
@@ -66,4 +67,13 @@ if(NODE_ENV == 'production') {
             }
         })
     )
+}
+
+function wrapRegexp(regexp, label) {
+    regexp.test = function(path) {
+        console.log(label, path);
+        return RegExp.prototype.test.call(this, path);
+    };
+
+    return regexp;
 }
