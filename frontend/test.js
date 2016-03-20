@@ -1,4 +1,4 @@
-let users = [
+var users = [
     { id: 'asdf', name: 'Vasy' },
     { id: 'dasd', name: 'Petia' },
     { id: 'gdfg', name: 'Masha' }
@@ -6,4 +6,13 @@ let users = [
 
 console.log( _.pluck(users, 'name') );
 
-console.log(jQuery('body'));
+console.log($('html'));
+
+function name(name) {
+    this.name = name || 'vasia';
+
+    this.getName = function() {
+        return this.name;
+    }
+}
+

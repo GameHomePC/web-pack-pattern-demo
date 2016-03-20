@@ -1,0 +1,18 @@
+{
+  "name": "web-pack-pattern-demo",
+  "description": "",
+  "main": "index.js",
+  "authors": [
+    "ealexseen"
+  ],
+  "license": "ISC",
+  "homepage": "https://github.com/GameHomePC/web-pack-pattern-demo",
+  "moduleType": [],
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}

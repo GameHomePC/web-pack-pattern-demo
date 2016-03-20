@@ -8,7 +8,8 @@ const config = require("./config-path.json");
 module.exports = {
     context: __dirname + "/frontend",
     entry: {
-        app: "./app"
+        app: "./app",
+        common: "./global"
     },
 
     output: {
@@ -29,7 +30,10 @@ module.exports = {
     plugins: [
         /* при ошибке не создаёт файлы */
         new webpack.NoErrorsPlugin(),
-
+        /* создаёт отдельный скрипт common.js */
+        new webpack.optimize.CommonsChunkPlugin({
+            name: "global"
+        })
         /* подключени глобальных библиотек ProvidePlugin */
         //new webpack.ProvidePlugin({
         //    _: 'lodash'
@@ -39,8 +43,11 @@ module.exports = {
     resolve: {
         root: [
             path.resolve('./frontend/lib'),
-            path.resolve('./frontend')
-        ]
+            path.resolve('./bower_components')
+        ],
+        //alias: {
+        //    lib: "lib"
+        //}
     },
 
     module: {

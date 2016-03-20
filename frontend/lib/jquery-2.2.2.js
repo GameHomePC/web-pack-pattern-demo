@@ -13,7 +13,6 @@
  */
 
 (function( global, factory ) {
-
 	if ( typeof module === "object" && typeof module.exports === "object" ) {
 		// For CommonJS and CommonJS-like environments where a proper `window`
 		// is present, execute the factory and get jQuery.
@@ -30,6 +29,7 @@
 				}
 				return factory( w );
 			};
+
 	} else {
 		factory( global );
 	}
@@ -9834,6 +9834,7 @@ jQuery.noConflict = function( deep ) {
 // Expose jQuery and $ identifiers, even in AMD
 // (#7102#comment:10, https://github.com/jquery/jquery/pull/557)
 // and CommonJS for browser emulators (#13566)
+
 if ( !noGlobal ) {
 	window.jQuery = window.$ = jQuery;
 }
